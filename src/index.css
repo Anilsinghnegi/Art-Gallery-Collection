@@ -1,0 +1,61 @@
+:root {
+  /* Light Mode - Primary Colors from cyan palette */
+  --theme-cyan-darkest: #136163;
+  --theme-cyan-darker:  #18848e;
+  --theme-cyan-dark:    #1a98a6;
+  --theme-cyan:         #1dadc0;
+  --theme-cyan-light:   #1fbdd2;
+  --theme-cyan-lighter: #33c7d8;
+  --theme-cyan-pale:    #53d1df;
+  --theme-cyan-paler:   #83dfe9;
+  --theme-cyan-lightest:#b3ecf1;
+  --theme-check-box:    #53d1df;
+  /* Light Mode Supporting Colors */
+  --theme-cream:        #f7fcfd;
+  --theme-blush:        #e6f7fa;
+  --theme-accent:       #136163;
+  --theme-text-dark:    #136163;
+  --theme-text-light:   #1a98a6;
+  --theme-bg-primary:   #ffffff;
+  --theme-bg-secondary: #f7fcfd;
+  --theme-border:       rgba(29, 173, 192, 0.3);
+  --theme-shadow:       rgba(19, 97, 99, 0.15);
+
+  /* Light Mode Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--theme-cyan) 0%, var(--theme-cyan-dark) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--theme-cyan-light) 0%, var(--theme-cyan-darker) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--theme-cyan-dark) 0%, var(--theme-cyan) 100%);
+  --gradient-background: linear-gradient(135deg, var(--theme-cream) 0%, var(--theme-blush) 100%);
+  --gradient-card: linear-gradient(135deg, white 0%, var(--theme-blush) 100%);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode - Inverted and Enhanced Colors */
+  --theme-cyan-darkest: #3d4d4d;
+  --theme-cyan-darker:  #325a5f;
+  --theme-cyan-dark:    #277178;
+  --theme-cyan:         #208391;
+  --theme-cyan-light:   #1dadc0;
+  --theme-cyan-lighter: #33c7d8;
+  --theme-cyan-pale:    #53d1df;
+  --theme-cyan-paler:   #83dfe9;
+  --theme-cyan-lightest:#b3ecf1;
+
+  /* Dark Mode Supporting Colors */
+  --theme-cream:        #192324;
+  --theme-blush:        #212e30;
+  --theme-accent:       #83dfe9;
+  --theme-text-dark:    #b3ecf1;
+  --theme-text-light:   #53d1df;
+  --theme-bg-primary:   #253335;
+  --theme-bg-secondary: #192324;
+  --theme-border:       rgba(179, 236, 241, 0.2);
+  --theme-shadow:       rgba(131, 223, 233, 0.25);
+
+  /* Dark Mode Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--theme-cyan-light) 0%, var(--theme-cyan-darkest) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--theme-cyan) 0%, var(--theme-cyan-dark) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--theme-cyan-lightest) 0%, var(--theme-cyan-paler) 100%);
+  --gradient-background: linear-gradient(135deg, var(--theme-cream) 0%, var(--theme-blush) 100%);
+  --gradient-card: linear-gradient(135deg, var(--theme-bg-primary) 0%, var(--theme-bg-secondary) 100%);
+}
