@@ -11,9 +11,9 @@ This project is a web-based application designed to display and manage art galle
 
 ## Tech Stack
 
-- **Frontend**: React.js
+- **Frontend**: React.js or typescript with primreact ui tool
 - **Package Manager**: npm
-- **Styling**: CSS / Bootstrap (or styled-components, depending on implementation)
+- **Styling**: CSS 
 - **Tooling**: Webpack / Vite (if applicable)
 
 ## Project Structure
