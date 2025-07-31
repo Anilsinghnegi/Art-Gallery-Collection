@@ -23,7 +23,6 @@ const ArtworkTable: React.FC<ArtworkTableProps> = ({
   isAllCurrentPageSelected,
   hasCurrentPageSelection,
 }) => {
-  // Show value or fallback to 'N/A'
   const formatDisplayValue = useCallback(
     (value: string | number | null | undefined): string => {
       return value ? String(value) : "N/A";
@@ -37,14 +36,13 @@ const ArtworkTable: React.FC<ArtworkTableProps> = ({
   );
 
   const rowCheckboxTemplate = useCallback(
-    (rowData: Types.Artwork): JSX.Element => {
+    (rowData: Types.Artwork): React.JSX.Element => {
       const isSelected = selectedRows.has(rowData.id);
       return (
         <Checkbox
           checked={isSelected}
           onChange={() => onRowSelect(rowData)}
           inputId={`checkbox-${rowData.id}`}
-          key={`row-checkbox-${rowData.id}-${isSelected}`}
         />
       );
     },
@@ -53,20 +51,20 @@ const ArtworkTable: React.FC<ArtworkTableProps> = ({
 
   const headerCheckboxTemplate = useCallback(
     () => (
-      <Checkbox
+      <input
+        type="checkbox"
+        id="select-all-checkbox"
         checked={isAllCurrentPageSelected}
-        indeterminate={!isAllCurrentPageSelected && hasCurrentPageSelection}
+        ref={(el) => {
+          if (el) {
+            el.indeterminate =
+              !isAllCurrentPageSelected && hasCurrentPageSelection;
+          }
+        }}
         onChange={onSelectAllChange}
-        inputId="select-all-checkbox"
-        key={`header-checkbox-${isAllCurrentPageSelected}-${hasCurrentPageSelection}-${selectedRows.size}`}
       />
     ),
-    [
-      isAllCurrentPageSelected,
-      hasCurrentPageSelection,
-      onSelectAllChange,
-      selectedRows.size,
-    ]
+    [isAllCurrentPageSelected, hasCurrentPageSelection, onSelectAllChange]
   );
 
   const idBodyTemplate = useCallback(
@@ -106,7 +104,6 @@ const ArtworkTable: React.FC<ArtworkTableProps> = ({
     [formatDisplayValue]
   );
 
-  // Helps force re-render only when selection changes
   const tableKey = useMemo(() => {
     return `datatable-${selectedRows.size}-${selectedIdsArray
       .slice(0, 5)
@@ -127,7 +124,10 @@ const ArtworkTable: React.FC<ArtworkTableProps> = ({
         key: "id",
         field: "id",
         header: "ID",
-        style: { minWidth: "80px", textAlign: "center" },
+        style: {
+          minWidth: "80px",
+          textAlign: "center" as React.CSSProperties["textAlign"],
+        },
         body: idBodyTemplate,
         sortable: true,
       },
@@ -167,7 +167,10 @@ const ArtworkTable: React.FC<ArtworkTableProps> = ({
         key: "date_start",
         field: "date_start",
         header: "Start Date",
-        style: { minWidth: "100px", textAlign: "center" },
+        style: {
+          minWidth: "100px",
+          textAlign: "center" as React.CSSProperties["textAlign"],
+        },
         body: startDateBodyTemplate,
         sortable: true,
       },
@@ -175,7 +178,10 @@ const ArtworkTable: React.FC<ArtworkTableProps> = ({
         key: "date_end",
         field: "date_end",
         header: "End Date",
-        style: { minWidth: "100px", textAlign: "center" },
+        style: {
+          minWidth: "100px",
+          textAlign: "center" as React.CSSProperties["textAlign"],
+        },
         body: endDateBodyTemplate,
         sortable: true,
       },

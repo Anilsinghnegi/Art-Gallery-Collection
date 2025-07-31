@@ -1,17 +1,17 @@
 // App.tsx
-import React, { useState, useEffect } from 'react';
-import { Paginator } from 'primereact/paginator';
-import SelectionPanel from './components/SelectionPanel';
-import ArtworkTable from './components/ArtworkTable';
-import SelectionDialog from './components/SelectionDialog';
-import ThemeToggle from './components/ThemeToggle';
-import { useArtworks } from './hooks/useArtworks';
-import { useSelection } from './hooks/useSelection';
-import * as Types from './types';
-import 'primereact/resources/themes/lara-light-cyan/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { Paginator } from "primereact/paginator";
+import SelectionPanel from "./components/SelectionPanel";
+import ArtworkTable from "./components/ArtworkTable";
+import SelectionDialog from "./components/SelectionDialog";
+import ThemeToggle from "./components/ThemeToggle";
+import { useArtworks } from "./hooks/useArtworks";
+import { useSelection } from "./hooks/useSelection";
+import * as Types from "./types";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "./App.css";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +21,13 @@ const App: React.FC = () => {
 
   const rowsPerPage = 12;
 
-  const { artworks, loading, totalRecords, fetchArtworks, fetchSelectedArtworks } = useArtworks();
+  const {
+    artworks,
+    loading,
+    totalRecords,
+    fetchArtworks,
+    fetchSelectedArtworks,
+  } = useArtworks();
 
   const {
     selectedRows,
@@ -30,25 +36,30 @@ const App: React.FC = () => {
     clearAllSelections,
     removeFromSelection,
     isAllCurrentPageSelected,
-    hasCurrentPageSelection
+    hasCurrentPageSelection,
   } = useSelection();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldUseDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const shouldUseDark = savedTheme === "dark" || (!savedTheme && prefersDark);
 
     setIsDarkMode(shouldUseDark);
-    document.documentElement.setAttribute('data-theme', shouldUseDark ? 'dark' : 'light');
+    document.documentElement.setAttribute(
+      "data-theme",
+      shouldUseDark ? "dark" : "light"
+    );
   }, []);
 
   const toggleTheme = () => {
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);
 
-    const theme = newTheme ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    const theme = newTheme ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   };
 
   useEffect(() => {
@@ -77,11 +88,11 @@ const App: React.FC = () => {
 
   const handleRemoveItem = (id: number) => {
     removeFromSelection(id);
-    setSelectedArtworks(prev => prev.filter(item => item.id !== id));
+    setSelectedArtworks((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (
-    <div className={`app ${isDarkMode ? 'dark-theme' : 'light-theme'}`}>
+    <div className={`app ${isDarkMode ? "dark-theme" : "light-theme"}`}>
       <header className="app-header">
         <h1>Art Gallery Collection</h1>
         <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
